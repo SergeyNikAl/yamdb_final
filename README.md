@@ -127,5 +127,5 @@ exit
 ### ReDoc:
 
 ```
-http://localhost/redoc/
+http://158.160.7.81/redoc/
 ```
