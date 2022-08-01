@@ -46,6 +46,7 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/api_yamdb:latest
   deploy:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     needs: build_and_push_to_docker_hub
     steps:
       - name: executing remote ssh commands to deploy
