@@ -43,7 +43,7 @@ jobs:
         with:
           file: api_yamdb/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/api_yamdb:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/api_yamdb
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
