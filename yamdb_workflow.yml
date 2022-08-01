@@ -42,9 +42,9 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          file: api_yamdb/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/api_yamdb
+          context: api_yamdb
+          tags: ${{ secrets.DOCKER_USERNAME }}/api_yamdb:latest
 
   deploy:
     runs-on: ubuntu-latest
@@ -69,9 +69,9 @@ jobs:
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             sudo docker-compose up -d
-            sudo docker-compose exec -T web python manage.py migrate
-            sudo docker-compose exec -T web python manage.py collectstatic --no-input
-            sudo docker-compose exec -T web python manage.py loaddata fixtures.json
+            sudo docker-compose exec web python manage.py migrate
+            sudo docker-compose exec web python manage.py collectstatic --no-input
+            sudo docker-compose exec web python manage.py loaddata fixtures.json
 
   send_message:
     runs-on: ubuntu-latest
