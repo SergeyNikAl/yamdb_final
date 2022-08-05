@@ -126,5 +126,5 @@ exit
 
 ### ReDoc:
 
-http://158.160.7.81/redoc/
+http:///51.250.105.164/redoc/
 
